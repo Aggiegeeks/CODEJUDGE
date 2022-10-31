@@ -1,0 +1,29 @@
+<%= form_for(@problem, data: { turbo: false }) do |f| %>
+  <% if @problem.errors.any? %>
+    <div class="error">
+      <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this @problem from being saved:</h2>
+
+      <ul>
+        <% @problem.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label "Description" %>
+  <%= f.text_area :body %>
+  
+  <%= f.fields_for :test_cases do |test_case| %>
+    <%= render "test_case_fields", f: test_case %>
+  <% end %>
+  <div>
+    <%= link_to_add_association "Add Test Case", f, :test_cases, class: "button" %>
+  </div>
+  <div>
+    <%= f.submit :class => "button button--submit"%>
+  </div>
+
+<% end %>

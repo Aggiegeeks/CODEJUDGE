@@ -1,0 +1,72 @@
+.table {
+  // table-layout: fixed;
+  overflow-x: auto;
+  margin-bottom: 50px;
+
+  table {
+    width: 100%;
+
+    thead {
+      tr {
+        th {
+          // white-space: normal;
+          padding: 0.5em 0;
+          text-align: left;
+          @include font-text-bold;
+          @include font-size(18px);
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        @include theme(background-color, table-row-background-primary);
+        transition: background-color 0.1s ease-out, color 0.1s ease-out;
+
+        &:hover {
+          @include theme(background-color, table-row-background-hover);
+          @include theme(color, table-row-color-hover);
+        }
+
+        &:nth-child(even) {
+          @include theme(background-color, table-row-background-secondary);
+
+          &:hover {
+            @include theme(background-color, table-row-background-hover)
+          }
+        }
+      }
+
+      button {
+        @include font-size-link;
+        @include font-text-regular;
+        
+        background-color: transparent;
+        border: none;
+        color: inherit;
+      }
+    }
+
+    th,
+    td {
+      min-width: 50px;
+      @include theme(border-bottom, table-border, 1px solid);
+    }
+
+    td {
+      &:hover {
+        border-bottom: 1px solid #d0d0d0;
+
+        > * {
+          transform: translateX(10px);
+        }
+      }
+
+      > a, button, span {
+        display: block;
+        padding: 0.5em;
+        transition: transform 0.2s ease-out;
+      }
+    }
+  }
+}

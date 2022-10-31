@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= (yield(:title) + " | " unless yield(:title).blank?).to_s + "CodeJudge" %>
+    </title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag asset_path('monitor-judge.png')%>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags("application", shim: false) %> 
+    <%= yield :js %>
+    <%= yield :head %>
+  </head>
+
+  <body class="<%= cookies[:color_mode] ? cookies[:color_mode] : "light" %>" >
+    <div id="application-page" class="layout">
+      <%= render "partials/header" %>
+      <button id="color-mode-button" class="button">Switch Color Mode</button>
+      <main>
+        <div class="container">
+          <div class="row">
+            <%= content_for?(:content) ? yield(:content) : yield %>
+          </div>
+        </div>
+      </main>
+      <%= render "partials/footer" %>
+      <%= render "partials/modal" %>
+    </div>
+  </body>
+</html>

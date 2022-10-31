@@ -1,0 +1,11 @@
+<div class="nested-fields test-case-card--edit">
+  <%= f.label :input %>
+  <%= f.text_field :input %>
+  <%= f.label :output %>
+  <%= f.text_field :output %>
+  <%= f.label :example, "Visible" %>
+  <div>
+    <%= f.check_box :example %>
+  </div>
+  <%= link_to_remove_association "Remove Test Case", f, class: "button" %>
+</div>

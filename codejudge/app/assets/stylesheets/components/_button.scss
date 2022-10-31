@@ -1,0 +1,72 @@
+button {
+  cursor: pointer;
+}
+
+.button {
+  @include theme(background-color, button-background);
+  @include theme(color, button-copy);
+  @include font-text-bold;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: none;
+  // border-radius: 2px;
+  font-size: 15px;
+  transition: background-color 0.2s ease-out, border 0.2s ease-out; 
+
+  &:hover {
+    @include theme(background-color, button-background-hover);
+    cursor: pointer;
+  }
+
+  &--google {
+    @include theme(background-color, background);
+    @include theme(color, copy-primary);
+    @include theme(border, input-outline, 1px solid);
+    height: 45px;
+    line-height: 45px;
+    white-space: nowrap;
+    border: 1px solid gray;
+  
+    &:hover {
+      @include theme(background-color, background);
+      cursor: pointer;
+    }
+  }
+
+  &--delete {
+    @include theme(border, button-delete-border, 3px solid);
+    @include theme(color, button-delete-copy);
+    @include theme(background-color, button-delete-background);
+    height: 55px;
+    display: flex;
+
+    &:hover {
+      @include theme(color, button-delete-copy-hover);
+      @include theme(background-color, button-delete-background-hover);
+      @include theme(border, button-delete-border-hover, 3px solid);
+    }
+  }
+
+  &--submit {
+    @include theme(border, button-submit-border, 3px solid);
+    @include theme(color, button-submit-copy);
+    @include theme(background-color, button-submit-background);
+    height: 55px;
+    text-transform: uppercase;
+    display: flex;
+
+    &:hover {
+      @include theme(color, button-submit-copy-hover);
+      @include theme(background-color, button-submit-background-hover);
+      @include theme(border, button-submit-border-hover, 3px solid);
+    }
+  }
+}
+

@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  text-rendering: auto; // optimizeLegibility | optimizeSpeed | geometricPrecision | inherit
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; // disables the default callout shown when you touch and hold a touch target
+  -webkit-font-smoothing: antialiased; // improves font rendering
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: none; // disables text size resizing on windows devices
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+}
+
+
+
+svg {
+  fill: currentColor;
+}

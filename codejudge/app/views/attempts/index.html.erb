@@ -1,0 +1,46 @@
+<% content_for :head do %>
+  <style><%= format_code_css('.highlight', style: "xcode") %></style>
+<% end %>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Attempts</h1>
+
+<div class="table col-12">
+
+  <% unless @attempts.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Created</th>
+          <th>Problem</th>
+          <th>Status</th>
+          <% if policy(:problem).new? %>
+            <th colspan="2"></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attempts.each do |attempt| %>
+        <tr>
+          <td><%= link_to attempt.created_at, attempt, data: {turbo: false} %></td>
+          <td><%= link_to attempt.problem.title, attempt, data: {turbo: false} %></td>
+          <td class="<%= attempt_status(attempt) ? "success" : "error" %>">
+            <strong><%= link_to attempt_status_string(attempt), attempt, data: {turbo: false}%></strong>
+          </td>
+          <% if policy(:attempt).new? %>
+            <td>
+              <%= button_delete_modal_tag "Delete", attempt, "Attempt" %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>You have no attempts yet.</p>
+    <div class="col-12">
+      <%= link_to "Start solving a Problem", problems_path, :class => "button" %>
+    </div>
+  <% end %>
+</div>

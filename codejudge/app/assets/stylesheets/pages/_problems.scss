@@ -1,0 +1,20 @@
+#test-cases {
+  margin-bottom: 30px;
+  
+  .row {
+    > div {
+      height: 100%;
+      margin-bottom: 20px;
+
+      .test-case-card,
+      .test-case-card--edit {
+        margin: 0;
+      }
+    }
+  }
+}
+
+
+.test-case-card--edit {
+  margin-bottom: 20px;
+}

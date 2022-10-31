@@ -1,0 +1,121 @@
+form {
+
+  label,
+  input,
+  textarea,
+  select {
+    display: block;
+  }
+
+  label {
+    margin: 18px 0 10px;
+
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+  }
+
+  input,
+  textarea,
+  select {
+    @include theme(border, input-outline, 1px solid);
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 30px;
+
+    &:focus {
+      @include theme(outline, input-outline-focus, 0.5px solid);
+      @include theme(border, input-outline-focus, 0.5px solid);
+    }
+  }
+
+  input {
+    &[type=text] {
+      height: 50px;
+      font-size: 16px;
+    }
+
+    &[type=submit] {
+      width: unset;
+      margin-top: 20px;
+    }
+
+    &[type=file] {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    &[type=checkbox] {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background-color: #fafafa;
+      @include theme(border, input-outline, 1px solid);
+      // box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+      padding: 9px;
+      display: inline-block;
+      position: relative;
+
+      &:checked {
+        // box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+        @include theme(color, input-outline);
+
+        &::after {
+          content: '\2714';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 14px;
+        }
+      }
+
+      &:active {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+      }
+    }
+  }
+
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+    resize: vertical;
+    height: 250px;
+    min-height: 50px;
+  }
+
+  input[type=file] {
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .field_with_errors {
+    input {
+      @include theme(border, error, 1px solid);
+    }
+  }
+}
+
+.form-login,
+.form-register {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 15px;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+  }
+
+  input {
+    display: block;
+    height: 50px;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}

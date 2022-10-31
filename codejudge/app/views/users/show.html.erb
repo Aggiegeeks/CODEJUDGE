@@ -1,0 +1,39 @@
+<p id="notice" class="success"><%= notice %></p>
+
+<div class="col-12">
+  <%= render "partials/link", copy: "Back to Users", path: users_path, icon: "chevron-left", classes: "link--back" %>
+</div>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @user.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Roles:</strong>
+  <ul>
+    <% @user_roles.each do |role| %>
+      <li><%= role %></li>
+    <% end %>
+  </ul>
+</p>
+
+<div class="nav-options">
+  <%= link_to "Edit this User", edit_user_path(@user), :class => "button" %>
+  <%= button_delete_modal_tag "Delete this User", @user, "User", class: "button button--delete" %>
+</div>
