@@ -11,7 +11,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 
-# Update the package list 
+# Update the package list
 RUN apt-get update -qq
 
 # install chrome + yarn + psql
@@ -38,7 +38,7 @@ ENV CODECOV_TOKEN 7bbfe139-fc76-4ba3-9e45-1ea968722cbb
 RUN curl -Os https://uploader.codecov.io/latest/linux/codecov
 RUN chmod +x codecov
 
-# Use a directory called /code in which to store this application's files. 
+# Use a directory called /code in which to store this application's files.
 # (The directory name is arbitrary and could have been anything.)
 WORKDIR /code
 

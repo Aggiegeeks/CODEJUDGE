@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Problem groups</h1>
+
+<div id="problem_groups">
+  <% @problem_groups.each do |problem_group| %>
+    <%= render problem_group %>
+    <p>
+      <%= link_to "Show this problem group", problem_group %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New problem group", new_problem_group_path %>

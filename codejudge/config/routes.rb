@@ -1,5 +1,10 @@
 
 Rails.application.routes.draw do
+  resources :student_groups
+  resources :problem_tags
+  resources :tags
+  resources :problem_groups
+  resources :groups
   resources :languages
   resources :attempts
   resources :problems

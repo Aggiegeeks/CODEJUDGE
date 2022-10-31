@@ -1,0 +1,2 @@
+class StudentGroup < ApplicationRecord
+end

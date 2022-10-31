@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Problem tags</h1>
+
+<div id="problem_tags">
+  <% @problem_tags.each do |problem_tag| %>
+    <%= render problem_tag %>
+    <p>
+      <%= link_to "Show this problem tag", problem_tag %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New problem tag", new_problem_tag_path %>

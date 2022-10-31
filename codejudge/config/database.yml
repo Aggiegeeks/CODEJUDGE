@@ -1,17 +1,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  database: df12sgn41tam3h
+  username: oodjrzsqnrkdyw
+  password: f860b2ace2abfd22612c6b4010b82f85540d0da7a6e8a4731b94e3cfd12de716
   port: 5432
-  host: <%= ENV['DATABASE_HOST'] %>
+  host: ec2-44-209-24-62.compute-1.amazonaws.com
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: codejudge_dev
+#  database: codejudge_dev
 
 test:
   <<: *default

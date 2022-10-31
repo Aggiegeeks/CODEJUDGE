@@ -1,32 +1,26 @@
-# CSCE606_CodeJudge
 
-## CSCE 606: Software Engineering Spring 2022 Course Project
+This project is the continuation of the Legacy Code Judge project which was created earlier in Spring 2022. 
 
-[![codecov](https://codecov.io/gh/the-raj/CSCE606_CodeJudge/branch/master/graph/badge.svg?token=D2208TK6ZW)](https://codecov.io/gh/the-raj/CSCE606_CodeJudge)
+Client : Ritchey
+TA :  Mayukh RoyChowdhury, Ravi Pranjal
 
-### Team members
+Members of the project :
 
-- [Karthik Mohan Raj](https://www.linkedin.com/in/the-raj)
-- [Paul Schade](https://people.tamu.edu/~pascha/) (Scrum Master)
-- Laren Spear
-- Kathan Vyas (Product Owner)
+1. Gokul Sai Doppalapudi
+2. Rajendra Thottempudi
+3. Shyam Prasad Nagulavancha
+4. Aravind Badavath
+5. Chandu Akula
+6. Chetan Nc 
 
-### Client
 
-- [Dr. Philip C. Ritchey](https://people.engr.tamu.edu/pcr/index.html)
+Proposed New Functionalities for this semester :
 
-### Project Links
+1. Tagging for different types of Problems
+2. Sorting and searching with tags
+3. Ability to add new test cases 
+4. Differentiating between Instructor and Student Profiles
+5. Ability to group students and provide Group statistics
+6. Providing ability for Instructors to create groups of students and problems
+7. Activating and Deactivating test cases
 
-- [PivotalTracker](https://www.pivotaltracker.com/n/projects/2555182)
-- [Heroku App](https://csce606-codejudge.herokuapp.com)
-- [Presentation Video](https://www.youtube.com/watch?v=zfQ4zsdj7M4)
-- [Demo Video](https://www.youtube.com/watch?v=OZrvqC53s2c)
-- [Final Report](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/CodeJudge_Report_Documentation.pdf)
-
-### Iterations
-
-- [Iteration 0](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/i0.tar)
-- [Iteration 1](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/i1.tar)
-- [Iteration 2](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/i2.tar)
-- [Iteration 3](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/i3.tar)
-- [Iteration 4](https://github.com/the-raj/CSCE606_CodeJudge/blob/master/documentation/Spring2022/i4.tar)

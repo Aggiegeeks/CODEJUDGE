@@ -208,6 +208,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.3-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
@@ -343,6 +345,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -380,7 +383,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.1p18
+   ruby 3.0.0p0
 
 BUNDLED WITH
-   2.3.7
+   2.3.23

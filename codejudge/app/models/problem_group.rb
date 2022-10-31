@@ -1,0 +1,2 @@
+class ProblemGroup < ApplicationRecord
+end
