@@ -28,7 +28,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_034357) do
     t.bigint "language_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "users_id", null: false
     t.boolean "passed"
+    t.index ["users_id"], name: "index_attempts_on_users_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_034357) do
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
   add_foreign_key "attempts", "languages"
+  add_foreign_key "attempts", "users", column: "users_id"
   add_foreign_key "problem_groups", "groups"
   add_foreign_key "problem_groups", "problems"
   add_foreign_key "problem_tags", "problems"
