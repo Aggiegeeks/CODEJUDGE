@@ -1,5 +1,7 @@
 
 Rails.application.routes.draw do
+  resources :questions
+  resources :instructors
   resources :student_groups
   resources :problem_tags
   resources :tags
