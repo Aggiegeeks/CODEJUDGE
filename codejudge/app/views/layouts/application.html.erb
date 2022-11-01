@@ -16,7 +16,7 @@
     <div id="application-page" class="layout">
         <% if current_page?(instructors_path) or current_page?(questions_path) %>
           <%= render 'partials/instructorHeader' %>
-        <% elsif current_page?(admins_path) or current_page?(approved_requests_path) %>
+        <% elsif current_page?(admins_path) or current_page?(approved_requests_path) or current_page?(users_path) %>
           <%= render 'partials/adminheader' %>
         <% else %>
           <%= render 'partials/header' %>
