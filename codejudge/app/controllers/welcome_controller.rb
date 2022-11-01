@@ -26,7 +26,18 @@ class WelcomeController < ApplicationController
     if logged_in
       cookies.signed[:user_id] = user.id
       session[:user_id] = user.id
-      redirect_to problems_path, notice: 'Logged in successfully'
+      role = Assignment.find_by(user_id: User.find_by(username: params[:username]).id).role_id
+      puts 'printing'
+      puts role
+      if role == 1
+        redirect_to admins_path, notice: 'Logged in admin successfully'
+      end
+      if role == 2
+        redirect_to "http://localhost:3000/problems/1", notice: 'Logged in instructor successfully'
+      end
+      if role == 4
+          redirect_to instructors_path, notice: 'Logged in student successfully'
+      end
     end
   end
 
