@@ -66,14 +66,11 @@
   <% end %>
 
   <%= form.label :LoginType, "Login Type" %>
-  <%= form.text_field :password_confirmation %>
   <select name="logintype">
-  <option value=""></option>
-  <option value="2">Instructor</option>
-  <option value="3">Student</option>
-</select>
-<% end %>
-
+    <option value=""></option>
+    <option value="2">Instructor</option>
+    <option value="3">Student</option>
+  </select>
 
   <%= form.button "sign up", :type => "submit", :id => "register_btn", :class => "button" %>
 <% end %>
