@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-   <%= @groups.each do |group| %>
+    <% for group in @groups %>
       <tr>
         <td><b><%= group.group_title %></b></td>
         <th colspan="2"></th>
