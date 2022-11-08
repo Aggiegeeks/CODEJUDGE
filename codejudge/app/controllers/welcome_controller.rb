@@ -26,6 +26,13 @@ class WelcomeController < ApplicationController
     if logged_in
       cookies.signed[:user_id] = user.id
       session[:user_id] = user.id
+      cookies.signed[:secret] = {
+      :value => "foo bar",
+      :domain => "example.com",
+      :secure => !(Rails.env.test? || Rails.env.development?)
+      }
+      puts cookies.signed[:secret]
+      puts  cookies.signed[:user_id]
       role = Assignment.find_by(user_id: User.find_by(username: params[:username]).id).role_id
       puts 'printing'
       puts role

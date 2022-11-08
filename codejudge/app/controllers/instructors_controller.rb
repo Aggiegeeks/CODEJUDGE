@@ -4,6 +4,7 @@ class InstructorsController < ApplicationController
   # GET /instructors or /instructors.json
   def index
     # @instructors = Instructor.all
+    @groups = Group.where(author_id: cookies.signed[:user_id])
   end
 
   # GET /instructors/1 or /instructors/1.json
