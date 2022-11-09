@@ -1,7 +1,9 @@
 <h1>New instructor</h1>
 
+<%= render "form", instructor: @instructor %>
+
 <br>
- <%= render "form", instructor: @Instructor %>
 
-
-
+<div>
+  <%= link_to "Back to instructors", instructors_path %>
+</div>
