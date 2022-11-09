@@ -3,8 +3,7 @@ class GroupsController < ApplicationController
 
   # GET /groups or /groups.json
   def index
-    #@groups = Group.all
-    @groups = Group.where(author_id: cookies.signed[:user_id])
+    @groups = Group.all
   end
 
   # GET /groups/1 or /groups/1.json
@@ -14,7 +13,6 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
-    @group.author_id ||= cookies.signed[:user_id]
   end
 
   # GET /groups/1/edit
@@ -25,23 +23,37 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
+    respond_to do |format|
       if @group.save
-        redirect_to instructors_path
+        format.html { redirect_to group_url(@group), notice: "Group was successfully created." }
+        format.json { render :show, status: :created, location: @group }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
-    
+    respond_to do |format|
       if @group.update(group_params)
-        redirect_to instructors_path
+        format.html { redirect_to group_url(@group), notice: "Group was successfully updated." }
+        format.json { render :show, status: :ok, location: @group }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @group.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
-    if @group.destroy
-      redirect_to instructors_path
+    @group.destroy
+
+    respond_to do |format|
+      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
