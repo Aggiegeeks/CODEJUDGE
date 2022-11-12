@@ -70,11 +70,7 @@
   <%= form.label :logintype, "Login Type" %>
   <%= select_tag :logintype, options_for_select([ "Instructor", "Student" ]), prompt: 'Choose one...' %>
 
-  <% for problem in Problem.all %>
-    <%= form.check_box :tags, {multiple: true}, problem.title %>
-    <%= form.label problem.title %>
-  <% end %>
-
+ 
 
 <%= form.button "sign up", :type => "submit", :id => "register_btn", :class => "button" %>
 <% end %>
