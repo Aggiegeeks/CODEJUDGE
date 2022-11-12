@@ -65,14 +65,18 @@
     </div>
   <% end %>
 
-  <%= form.label :LoginType, "Login Type" %>
-  <select name="logintype">
-    <option value=""></option>
-    <option value="2">Instructor</option>
-    <option value="3">Student</option>
-  </select>
 
-  <%= form.button "sign up", :type => "submit", :id => "register_btn", :class => "button" %>
+
+  <%= form.label :logintype, "Login Type" %>
+  <%= select_tag :logintype, options_for_select([ "Instructor", "Student" ]), prompt: 'Choose one...' %>
+
+  <% for problem in Problem.all %>
+    <%= form.check_box :tags, {multiple: true}, problem.title %>
+    <%= form.label problem.title %>
+  <% end %>
+
+
+<%= form.button "sign up", :type => "submit", :id => "register_btn", :class => "button" %>
 <% end %>
 <%= google_sign_in_button proceed_to: create_register_url, data: {turbo: "false"}, class: "button button--google" do %>
   <%= embedded_svg 'google_logo' %> Sign up with Google
