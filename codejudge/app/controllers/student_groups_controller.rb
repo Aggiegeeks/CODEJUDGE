@@ -1,9 +1,14 @@
 class StudentGroupsController < ApplicationController
   before_action :set_student_group, only: %i[ show edit update destroy ]
+  helper_method :get_users_of_group, :get_problems_of_group
+
 
   # GET /student_groups or /student_groups.json
   def index
     @student_groups = StudentGroup.all
+    @users = User.all
+    @problems = Problem.all
+    @problem_group = ProblemGroup.all
   end
 
   # GET /student_groups/1 or /student_groups/1.json
@@ -56,6 +61,28 @@ class StudentGroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_users_of_group
+      student_group_mappings = StudentGroup.where(group_id: '1')
+#       @students_of_this_group = []
+#
+#       student_group_mappings.each do |t|
+#             m = User.find(t.user_id)
+#             @students_of_this_group.push(user: m)
+#             puts " Current student is : " + m.username
+#       end
+  end
+
+    def get_problems_of_group
+        problem_group_mappings = ProblemGroup.where(group_id: '1')
+  #       @students_of_this_group = []
+  #
+  #       student_group_mappings.each do |t|
+  #             m = User.find(t.user_id)
+  #             @students_of_this_group.push(user: m)
+  #             puts " Current student is : " + m.username
+  #       end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
