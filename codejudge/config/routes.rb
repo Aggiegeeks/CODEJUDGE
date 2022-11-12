@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   resources :attempts
   resources :problems
 
+  resources :groups do
+    member do
+      get 'details'
+    end
+  end
+
 
   get 'errors/not_found'
   get 'errors/internal_server_error'
