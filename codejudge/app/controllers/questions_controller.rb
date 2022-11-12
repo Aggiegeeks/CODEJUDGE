@@ -57,6 +57,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def demo()
+    # puts "reached test block"
+    # id = params[:id]
+    # puts "current id is " + id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question

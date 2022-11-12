@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   resources :attempts
   resources :problems
 
+  resources :questions do
+    member do
+      get 'demo'
+    end
+  end
 
   get 'errors/not_found'
   get 'errors/internal_server_error'
@@ -28,8 +33,13 @@ Rails.application.routes.draw do
   post 'register', to: 'registrations#create'
   get 'register/create', to: 'registrations#create', as: :create_register
   post 'color_mode', to: 'application#color_mode', as: :color_mode
+  get 'questions/demo', to: 'questions#demo'
+
 
   match "/403", to: "errors#forbidden", via: :all
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
+
+
+  
 end
