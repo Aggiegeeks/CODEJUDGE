@@ -7,40 +7,18 @@
       <tr>
         <th><h1 class="col-12">Classes</h1></th>
         
-        <th><%= link_to "New Class", new_problem_path, :class => "button" %></th>
+        <th><%= link_to "New Class", new_group_path, :class => "button" %></th>
       </tr>
     </thead>
     <tbody>
+    <% for group in @groups %>
       <tr>
-        <td><b>Class 1</b></td>
+        <td><b><%=link_to group.group_title, details_group_url(group.id)%></b></td>
         <th colspan="2"></th>
-        <td><%= link_to "Modify", :class => "button" %></td>
-        <td><%= link_to "Delete", :class => "button" %></td>
+        <td><%= link_to "Modify", edit_group_path(group) %></td>
+        <td><%= link_to "Delete", group , method: :delete %></td>
       </tr>
-      <tr>
-        <td><b>Class 2</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Modify", :class => "button" %></td>
-        <td><%= link_to "Delete", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Class 3</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Modify", :class => "button" %></td>
-        <td><%= link_to "Delete", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Class 4</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Modify", :class => "button" %></td>
-        <td><%= link_to "Delete", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Class 5</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Modify", :class => "button" %></td>
-        <td><%= link_to "Delete", :class => "button" %></td>
-      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

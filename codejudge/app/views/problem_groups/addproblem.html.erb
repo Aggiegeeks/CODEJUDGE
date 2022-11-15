@@ -1,0 +1,10 @@
+<h3 class = "col-12">Adding New Problem</h3>
+<%= form_with(:url => add_problem_form_path, :id => "add_problem_form", :class => "form-register", :method => :post, data: { turbo: false }) do |form| %>
+  <%= form.label :group_id, "Class "+ params[:id] %>
+  <br>
+  <%= form.label :problem_id, "Problem Id" %>
+  <%= form.text_field :problem_id %>
+  <%= hidden_field_tag :group_id, params[:id] %>
+  <%= form.button "Add", :type => "submit", :id => "register_btn", :class => "button" %>
+  <%= link_to "Back", instructors_path, :class => "button" %>
+<% end %>
