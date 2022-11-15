@@ -1,5 +1,9 @@
 
 Rails.application.routes.draw do
+  post '/addition/form', to: 'student_groups#addition_from'
+  post '/add_problem/form', to: 'problem_groups#add_problem_form'
+  get '/remove_student_group', to: 'student_groups#remove_student_group'
+  get '/remove_problem_group', to: 'problem_groups#remove_problem_group'
   resources :approved_requests
   resources :admins
   resources :questions
@@ -12,6 +16,24 @@ Rails.application.routes.draw do
   resources :languages
   resources :attempts
   resources :problems
+
+  resources :groups do
+    member do
+      get 'details'
+    end
+  end
+
+  resources :student_groups do
+    member do
+      get 'addition'
+    end
+  end
+
+  resources :problem_groups do
+    member do
+      get 'addproblem'
+    end
+  end
 
 
   get 'errors/not_found'
