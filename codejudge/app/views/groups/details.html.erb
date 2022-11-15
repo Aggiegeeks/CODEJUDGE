@@ -2,6 +2,14 @@
 
 <h1>Class Details</h1>
 
+<div class="col-12">
+  <%= link_to "Add Students", addition_student_group_url(get_group_id), :class => "button" %>
+</div>
+
+<div class="col-12">
+  <%= link_to "Add Problems", addproblem_problem_group_url(get_group_id), :class => "button" %>
+</div>
+
 
 <div class="table col-12">
   <table>
@@ -17,12 +25,14 @@
         <td><%=link_to currentUser.firstname, currentUser %></td>
         <td><%=link_to currentUser.lastname, currentUser %></td>
         <td><%=link_to currentUser.email, currentUser %></td>
+        <td>
+          <%= link_to 'Remove From Class', {:action=>"remove_student_group", :controller=>"student_groups", :id=> t.id} %>
+        </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
 <div class="table col-12">
   <table>
     <thead>
@@ -38,7 +48,7 @@
         <% if policy(:problem).new? %>
           <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td>
-            <%= button_delete_modal_tag "Delete", problem, "Problem" %>
+            <%= link_to 'Remove From Class', {:action=>"remove_problem_group", :controller=>"problem_groups", :id=> t.id} %>
           </td>
         <% end %>
       </tr>
