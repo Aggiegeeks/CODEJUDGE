@@ -1,0 +1,10 @@
+<h3 class = "col-12">Adding New Student</h3>
+<%= form_with(:url => addition_form_path, :id => "addition_form", :class => "form-register", :method => :post, data: { turbo: false }) do |form| %>
+  <%= form.label :group_id, "Class "+ params[:id] %>
+  <br>
+  <%= form.label :email, "Email" %>
+  <%= form.text_field :email %>
+  <%= hidden_field_tag :group_id, params[:id] %>
+  <%= form.button "Add", :type => "submit", :id => "register_btn", :class => "button" %>
+  <%= link_to "Back", instructors_path, :class => "button" %>
+<% end %>

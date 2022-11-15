@@ -1,6 +1,6 @@
 class StudentGroupsController < ApplicationController
   before_action :set_student_group, only: %i[ show edit update destroy ]
-  helper_method :get_users_of_group, :get_problems_of_group
+  helper_method :get_users_of_group, :get_problems_of_group, :get_user
 
 
   # GET /student_groups or /student_groups.json
@@ -82,6 +82,32 @@ class StudentGroupsController < ApplicationController
   #             @students_of_this_group.push(user: m)
   #             puts " Current student is : " + m.username
   #       end
+    end
+
+    def addition_from
+      puts params
+      puts params[:email]
+      @student_group_temp = StudentGroup.new
+      @student_group_temp.group_id = params[:group_id]
+      @student_group_temp.user_id = get_user.first.id
+      puts @student_group_temp
+      @student_group_temp.save
+      redirect_back(fallback_location: root_path)
+    end
+    
+    def get_user 
+      user = User.where(email: params[:email])
+    end
+
+    def remove_student_group
+      puts params[:id]
+      @student_group_temp = StudentGroup.where(id: params[:id])
+      @student_group_temp.first.destroy
+      redirect_back(fallback_location: root_path)
+    end
+
+    def addition
+      id = params[:group_id]
     end
 
   private

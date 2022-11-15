@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
-  helper_method :get_users_of_group, :get_problems_of_group
+  helper_method :get_users_of_group, :get_problems_of_group, :get_group_id
   # GET /groups or /groups.json
   def index
     @groups = Group.where(author_id: cookies.signed[:user_id])
@@ -25,9 +25,7 @@ class GroupsController < ApplicationController
   end
 
   def details()
-    puts "reached test block"
     id = params[:id]
-    puts "current id is " + id
   end
 
   # POST /groups or /groups.json
@@ -60,6 +58,10 @@ class GroupsController < ApplicationController
 
   def get_problems_of_group
     problem_group_mappings = ProblemGroup.where(group_id: params[:id])
+  end
+
+  def get_group_id
+    group_id = params[:id]
   end
 
   private

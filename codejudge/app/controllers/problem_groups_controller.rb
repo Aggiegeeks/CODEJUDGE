@@ -57,6 +57,22 @@ class ProblemGroupsController < ApplicationController
     end
   end
 
+  def add_problem_form
+    @problem_group_temp = ProblemGroup.new
+    @problem_group_temp.group_id = params[:group_id]
+    @problem_group_temp.problem_id = params[:problem_id]
+    puts @probelm_group_temp
+    @problem_group_temp.save
+    redirect_back(fallback_location: root_path)
+  end
+
+  def remove_problem_group
+    puts params[:id]
+    @student_group_temp = ProblemGroup.where(id: params[:id])
+    @student_group_temp.first.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_problem_group

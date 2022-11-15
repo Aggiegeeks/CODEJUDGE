@@ -3,7 +3,7 @@
 <h1>Problems</h1>
 <% if policy(:problem).new? %>
   <div class="col-12">
-    <%= link_to "New Problem",{:action=>"details", :controller=>"groups", :id=>"2"}, :class => "button" %>
+    <%= link_to "New Problem", new_problem_path, :class => "button" %>
   </div>
 <% end %>
 <div class="table col-12">
@@ -21,7 +21,7 @@
       <tr>
         <td><%=link_to problem.title, problem %></td>
         <% if policy(:problem).new? %>
-          <td><%= link_to 'Edit', details_group_url(problem.id) %></td>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td>
             <%= button_delete_modal_tag "Delete", problem, "Problem" %>
           </td>

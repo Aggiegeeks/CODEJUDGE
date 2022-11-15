@@ -3,11 +3,11 @@
 <h1>Class Details</h1>
 
 <div class="col-12">
-  <%= link_to "Add Students",{:action=>"new", :controller=>"student_groups"}, :class => "button" %>
+  <%= link_to "Add Students", addition_student_group_url(get_group_id), :class => "button" %>
 </div>
 
 <div class="col-12">
-  <%= link_to "Add Problems",{:action=>"new", :controller=>"problem_groups"}, :class => "button" %>
+  <%= link_to "Add Problems", addproblem_problem_group_url(get_group_id), :class => "button" %>
 </div>
 
 
@@ -26,14 +26,13 @@
         <td><%=link_to currentUser.lastname, currentUser %></td>
         <td><%=link_to currentUser.email, currentUser %></td>
         <td>
-          <%= link_to 'Remove From Class', {:action=>"destroy", :controller=>"student_groups", :id=> t.id} %>
+          <%= link_to 'Remove From Class', {:action=>"remove_student_group", :controller=>"student_groups", :id=> t.id} %>
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
 <div class="table col-12">
   <table>
     <thead>
@@ -47,9 +46,9 @@
       <tr>
         <td><%=link_to problem.title, problem %></td>
         <% if policy(:problem).new? %>
-#           <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td>
-            <%= link_to 'Remove From Class', {:action=>"destroy", :controller=>"problem_groups", :id=> t.id} %>
+            <%= link_to 'Remove From Class', {:action=>"remove_problem_group", :controller=>"problem_groups", :id=> t.id} %>
           </td>
         <% end %>
       </tr>
