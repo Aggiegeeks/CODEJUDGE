@@ -63,7 +63,7 @@ class StudentGroupsController < ApplicationController
   end
 
   def get_users_of_group
-      student_group_mappings = StudentGroup.where(group_id: '1')
+      student_group_mappings = StudentGroup.where(group_id: params[:id])
 #       @students_of_this_group = []
 #
 #       student_group_mappings.each do |t|
@@ -74,7 +74,7 @@ class StudentGroupsController < ApplicationController
   end
 
     def get_problems_of_group
-        problem_group_mappings = ProblemGroup.where(group_id: '1')
+        problem_group_mappings = ProblemGroup.where(group_id: params[:id])
   #       @students_of_this_group = []
   #
   #       student_group_mappings.each do |t|

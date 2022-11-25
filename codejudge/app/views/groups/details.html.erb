@@ -16,6 +16,10 @@
     <thead>
       <tr>
         <th><h3 class = "col-12">Users</h3></th>
+        <% user_count = get_users_of_group.count %>
+        <th><br></th>
+        <th><br></th>
+        <th><h3>Total Users: <%= user_count %></h3></th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +42,19 @@
     <thead>
       <tr>
         <th><h3 class = "col-12">Problems</h3></th>
+        <% problem_count = get_problems_of_group.count %>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><br></th>
+        <th><h3>Total Problems: <%= problem_count %></h3></th>
       </tr>
     </thead>
     <tbody>
@@ -45,6 +62,11 @@
       <% problem = Problem.find(t.problem_id) %>
       <tr>
         <td><%=link_to problem.title, problem %></td>
+        <th colspan="2"></th>
+        <th colspan="2"></th>
+        <th colspan="2"></th>
+        <th colspan="2"></th>
+        <th colspan="2"></th>
         <% if policy(:problem).new? %>
           <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td>
