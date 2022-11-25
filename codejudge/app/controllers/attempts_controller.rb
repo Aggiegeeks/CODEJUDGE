@@ -64,6 +64,24 @@ class AttemptsController < ApplicationController
       timeout = index*api_timeout
       SubmitCodeJob.perform_at(timeout.seconds.from_now, item[0], item[1], language, @attempt.code, @testcases_query.index(item), current_user.id, @attempt.id)
     end
+
+
+    @graded_test_cases = Score.all.where(attempt_id: @attempt.id)
+    @number_graded_test_cases = @graded_test_cases.length
+
+    s = 0
+
+    @graded_test_cases.each_with_index do |item, index|
+      if(item.passed)
+        s = s + 1
+      end
+    end
+
+    netScore = s/@number_graded_test_cases
+
+    @attempt.testScore = netScore
+
+    @attempt.save
   end
 
   # PATCH/PUT /attempts/1 or /attempts/1.json
