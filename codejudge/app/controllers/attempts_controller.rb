@@ -48,7 +48,6 @@ class AttemptsController < ApplicationController
     @testcases_query = TestCase.left_outer_joins(:problem).where(problem_id: @attempt.problem_id).map{ |r| [r.input, r.output]}
 
     @testcases = {}
-    printf("Reached here in attempts controller")
     respond_to do |format|
       if @attempt.save
         format.html { redirect_to attempt_url(@attempt), notice: "Attempt was successfully created." }
@@ -63,7 +62,6 @@ class AttemptsController < ApplicationController
 
     @testcases_query.each_with_index do |item, index|
       timeout = index*api_timeout
-          printf("***************** GOING INTO SubmitCodeJob**************")
       SubmitCodeJob.perform_at(timeout.seconds.from_now, item[0], item[1], language, @attempt.code, @testcases_query.index(item), current_user.id, @attempt.id)
     end
   end
