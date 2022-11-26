@@ -23,7 +23,7 @@ class Grader
 
   def grade
 
-    header_token = "Token " + @@glot_api_token
+    header_token = "Token " + "d8fd25f3-381e-4587-a910-76dce6f31e80"
 
     @headers = {"Authorization" => header_token, "Content-type" => "application/json"}
 
@@ -32,7 +32,7 @@ class Grader
     results = {}
 
     #Left as array for future batching support
-
+    printf("I AM IN GRADER")
     @testcases.each do |key,value|
 
       @array = Array.new
@@ -41,7 +41,9 @@ class Grader
       payload[:stdin] = key
       payload[:files] = @array << {:name => "main#{@extension}", :content => @code}
       payload = payload.to_json
+      printf("BEFORE REST CLIENT")
       response = RestClient.post(@url, payload, headers=@headers)
+      printf("AFTER REST CLIENT")
       decoded_response = JSON.parse(response.body)
 
       @passed = decoded_response['stdout'].strip == value ? true : false
