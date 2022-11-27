@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :problem_groups do
     member do
       get 'addproblem'
