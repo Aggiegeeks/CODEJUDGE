@@ -30,7 +30,13 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
+    puts "generatecode"
+    puts generate_activation_code
+    classcode = group_params.extract!(:classcode)
+    puts "in create"
+    puts classcode
     @group = Group.new(group_params)
+    @group.classcode = generate_activation_code
 
       if @group.save
         redirect_to instructors_path
@@ -64,6 +70,11 @@ class GroupsController < ApplicationController
     group_id = params[:id]
   end
 
+  def generate_activation_code(size = 6)
+    charset = %w{ 2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
+    (0...size).map{ charset.to_a[rand(charset.size)] }.join
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
@@ -72,6 +83,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:author_id, :group_title, :description)
+      params.require(:group).permit(:author_id, :group_title, :description, :classcode)
     end
 end

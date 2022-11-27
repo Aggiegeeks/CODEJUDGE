@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/add_problem/form', to: 'problem_groups#add_problem_form'
   get '/remove_student_group', to: 'student_groups#remove_student_group'
   get '/remove_problem_group', to: 'problem_groups#remove_problem_group'
+
   resources :approved_requests
   resources :admins
   resources :questions
@@ -26,6 +27,12 @@ Rails.application.routes.draw do
   resources :student_groups do
     member do
       get 'addition'
+    end
+  end
+
+  resources :student_groups do
+    member do
+      post 'joinclass'
     end
   end
 

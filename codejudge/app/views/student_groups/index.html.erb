@@ -1,46 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Class Details</h1>
 
 
-<div class="table col-12">
-  <table>
-    <thead>
-      <tr>
-        <th><h3 class = "col-12">Users</h3></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @students_of_this_group = get_users_of_group.each do |t|%>
-      <% currentUser = User.find(t.user_id) %>
-      <tr>
-        <td><%=link_to currentUser.firstname, currentUser %></td>
-        <td><%=link_to currentUser.lastname, currentUser %></td>
-        <td><%=link_to currentUser.email, currentUser %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+
+
 
 <div class="table col-12">
   <table>
     <thead>
       <tr>
-        <th><h3 class = "col-12">Problems</h3></th>
+        <th><h1 class="col-12">Classes</h1></th>
+        <th>
+        
+        </th>
+        <th>
+        <%= form_with url: joinclass_student_group_url(1), local: true, method: :post do |f|%>
+          <%= f.text_field :classcode, placeholder: "Enter class code" %>
+          <%= f.submit "Join Class" %>
+        <%end%>
+
       </tr>
     </thead>
     <tbody>
-      <% @problems_of_this_group = get_problems_of_group.each do |t|%>
-      <% problem = Problem.find(t.problem_id) %>
+    <% for group in @groups_2 %>
       <tr>
-        <td><%=link_to problem.title, problem %></td>
-        <% if policy(:problem).new? %>
-          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-          <td>
-            <%= button_delete_modal_tag "Delete", problem, "Problem" %>
-          </td>
-        <% end %>
+        <td><b><%=link_to group.group_title, details_group_url(group.id)%></b></td>
+        <th colspan="2"></th>
       </tr>
       <% end %>
     </tbody>
