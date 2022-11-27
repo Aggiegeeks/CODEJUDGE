@@ -23,7 +23,7 @@ class Grader
 
   def grade
 
-    header_token = "Token " + @@glot_api_token
+    header_token = "Token " + "d8fd25f3-381e-4587-a910-76dce6f31e80"
 
     @headers = {"Authorization" => header_token, "Content-type" => "application/json"}
 
@@ -32,7 +32,6 @@ class Grader
     results = {}
 
     #Left as array for future batching support
-
     @testcases.each do |key,value|
 
       @array = Array.new
