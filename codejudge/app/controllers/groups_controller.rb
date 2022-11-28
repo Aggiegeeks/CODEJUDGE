@@ -75,6 +75,7 @@ class GroupsController < ApplicationController
     (0...size).map{ charset.to_a[rand(charset.size)] }.join
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
