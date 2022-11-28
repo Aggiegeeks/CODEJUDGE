@@ -11,36 +11,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><b>Question 1</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Edit", :class => "button" %></td>
-        <td><%= link_to "Remove", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Question 2</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Edit", :class => "button" %></td>
-        <td><%= link_to "Remove", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Question 3</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Edit", :class => "button" %></td>
-        <td><%= link_to "Remove", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Question 4</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Edit", :class => "button" %></td>
-        <td><%= link_to "Remove", :class => "button" %></td>
-      </tr>
-      <tr>
-        <td><b>Question 5</b></td>
-        <th colspan="2"></th>
-        <td><%= link_to "Edit", :class => "button" %></td>
-        <td><%= link_to "Remove", :class => "button" %></td>
-      </tr>
+      <% @problems.each do |problem| %>
+        <tr>
+          <td><b><%= problem.title %></b></td>
+          <th colspan="2"></th>
+          <td><%= link_to "Modify", edit_problem_path(problem) %></td>
+          <td><%= link_to "Delete", problem , method: :delete %></td>
+        </tr>
+        <% end %>
     </tbody>
   </table>
 </div>

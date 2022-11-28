@@ -31,7 +31,6 @@ class Grader
     results = {}
 
     #Left as array for future batching support
-
     @testcases.each do |key,value|
 
       @array = Array.new

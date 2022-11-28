@@ -11,7 +11,6 @@ class SubmitCodeJob
     language = args[2]
     code = args[3]
     test_case_number = args[4]
-
     current_user = args[5]
     current_attempt = args[6]
     grader = Grader.new(@testcase,language,code,current_user, current_attempt)
