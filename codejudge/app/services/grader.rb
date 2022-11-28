@@ -22,8 +22,7 @@ class Grader
   end
 
   def grade
-
-    header_token = "Token " + @@glot_api_token
+    header_token = "Token " + "d8fd25f3-381e-4587-a910-76dce6f31e80"
 
     @headers = {"Authorization" => header_token, "Content-type" => "application/json"}
 
@@ -32,7 +31,6 @@ class Grader
     results = {}
 
     #Left as array for future batching support
-
     @testcases.each do |key,value|
 
       @array = Array.new
@@ -55,6 +53,34 @@ class Grader
       Score.create!(passed: @passed, stdout: @stdout, stderr: @stderr, attempt: @attempt, test_case: @testcase)
 
     
+      return {passed: @passed, stdout: @stdout, stderr: @stderr}
+    end
+  end
+
+  def grade_dont_save
+    header_token = "Token " + "d8fd25f3-381e-4587-a910-76dce6f31e80"
+  
+    @headers = {"Authorization" => header_token, "Content-type" => "application/json"}
+  
+    @url = "https://glot.io/api/run/#{@language}/latest"
+  
+    results = {}
+  
+    @testcases.each do |key,value|
+  
+      @array = Array.new
+  
+      payload = {}
+      payload[:stdin] = key
+      payload[:files] = @array << {:name => "main#{@extension}", :content => @code}
+      payload = payload.to_json
+      response = RestClient.post(@url, payload, headers=@headers)
+      decoded_response = JSON.parse(response.body)
+  
+      @passed = decoded_response['stdout'].strip == value ? true : false
+      @stdout = decoded_response['stdout']
+      @stderr = decoded_response['stderr']
+      
       return {passed: @passed, stdout: @stdout, stderr: @stderr}
     end
   end

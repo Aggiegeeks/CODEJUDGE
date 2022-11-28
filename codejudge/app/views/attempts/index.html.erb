@@ -14,6 +14,7 @@
         <tr>
           <th>Created</th>
           <th>Problem</th>
+          <th>Score</th>
           <th>Status</th>
           <% if policy(:problem).new? %>
             <th colspan="2"></th>
@@ -25,6 +26,7 @@
         <tr>
           <td><%= link_to attempt.created_at, attempt, data: {turbo: false} %></td>
           <td><%= link_to attempt.problem.title, attempt, data: {turbo: false} %></td>
+           <td><%= link_to get_net_score(attempt.id)%></td>
           <td class="<%= attempt_status(attempt) ? "success" : "error" %>">
             <strong><%= link_to attempt_status_string(attempt), attempt, data: {turbo: false}%></strong>
           </td>
