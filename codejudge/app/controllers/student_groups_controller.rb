@@ -9,6 +9,10 @@ class StudentGroupsController < ApplicationController
     @users = User.all
     @problems = Problem.all
     @problem_group = ProblemGroup.all
+    @group_ids = StudentGroup.where(user_id: session[:user_id]).pluck(:group_id)
+    puts @group_ids
+    @groups_2 = Group.where(id: @group_ids)
+    puts @groups_2
   end
 
   # GET /student_groups/1 or /student_groups/1.json
@@ -23,6 +27,22 @@ class StudentGroupsController < ApplicationController
   # GET /student_groups/1/edit
   def edit
   end
+
+  def joinclass
+    group_id= Group.find_by(classcode: user_params_2).id
+    puts session[:user_id]
+
+    @student_group = StudentGroup.new
+    @student_group.group_id = group_id
+    @student_group.user_id = session[:user_id]
+
+    if @student_group.save
+      redirect_to student_groups_path, notice: 'Joined class successfully'
+    else
+      redirect_to student_groups_path, notice: 'Unable to join class'
+    end
+  end
+
 
   # POST /student_groups or /student_groups.json
   def create
@@ -119,5 +139,9 @@ class StudentGroupsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def student_group_params
       params.require(:student_group).permit(:group_id, :user_id)
+    end
+
+    def user_params_2
+      params.require(:classcode)
     end
 end
