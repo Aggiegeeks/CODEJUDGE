@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    # @questions = Question.all
+    @problems = Problem.all
   end
 
   # GET /questions/1 or /questions/1.json
@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1 or /questions/1.json
   def destroy
-    @question.destroy
+    @problem.destroy
 
     respond_to do |format|
       format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
