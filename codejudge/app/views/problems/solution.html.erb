@@ -1,8 +1,5 @@
 <h3>Code:</h3>
 <div class="code-preview">
     <%problem = get_problem(params[:id])%>
-    <%puts "**********************************"%>
-    <%puts problem%>
-    <%puts "**********************************"%>
     <%=format_code(problem.instructor_solution, "perl") %>
 </div>
