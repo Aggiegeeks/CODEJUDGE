@@ -1,5 +1,6 @@
 class ProblemGroupsController < ApplicationController
   before_action :set_problem_group, only: %i[ show edit update destroy ]
+  helper_method :get_title_id
 
   # GET /problem_groups or /problem_groups.json
   def index
@@ -58,12 +59,23 @@ class ProblemGroupsController < ApplicationController
   end
 
   def add_problem_form
+    title_id = get_title_id()
+    prob_id = title_id[params[:problem_title]]
     @problem_group_temp = ProblemGroup.new
     @problem_group_temp.group_id = params[:group_id]
-    @problem_group_temp.problem_id = params[:problem_id]
+    @problem_group_temp.problem_id = prob_id
     puts @probelm_group_temp
     @problem_group_temp.save
     redirect_back(fallback_location: root_path)
+  end
+
+  def get_title_id
+    @problems = Problem.all
+    titles = {}
+    for problem in @problems
+      titles[problem.title] = problem.id
+    end
+    titles = titles
   end
 
   def remove_problem_group
