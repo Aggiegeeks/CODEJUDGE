@@ -14,9 +14,9 @@
 
   <body class="<%= cookies[:color_mode] ? cookies[:color_mode] : "light" %>" >
     <div id="application-page" class="layout">
-        <% if current_page?(instructors_path) or current_page?(questions_path) %>
+        <% if current_user.role? :instructor %>
           <%= render 'partials/instructorHeader' %>
-        <% elsif current_page?(admins_path) or current_page?(approved_requests_path) or current_page?(users_path) %>
+        <% elsif current_user.role? :admin %>
           <%= render 'partials/adminheader' %>
         <% else %>
           <%= render 'partials/header' %>
