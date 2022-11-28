@@ -33,6 +33,20 @@
     <%= f.submit "Submit Code", :class => "button"%>
   <% end %>
 </section>
+<% if @problem.instructor_solution %>
+    <%= link_to "Show Solution", solution_problem_url(@problem.id), :class =>"button"%>
+<%end%>
+<% if current_user.role? :instructor #&& @problem.author_id == cookies.signed[:user_id]#%>
+  <section id ="solution-upload">
+    <%= form_with(:url => solution_upload_form_path_url) do |f| %>
+      <%= hidden_field_tag(:problem_id, @problem.id) %>
+      <%= f.select :language, @languages_list, :prompt => "Select Solution Code Language" %>
+      <%= f.label :solution_sourcecode, "Solution File upload:" %>
+      <%= f.file_field :solution_sourcecode %>
+      <%= f.submit submit_button_modal(@problem), :class => "button"%>
+    <% end %>
+  </section>
+<% end %>
 <div class="nav-options">
   <% if policy(:problem).edit? %>
     <%= link_to "Edit this Problem", edit_problem_path(@problem), :class => "button" %>
