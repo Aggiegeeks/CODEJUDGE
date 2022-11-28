@@ -70,7 +70,7 @@ class StudentGroupsController < ApplicationController
 #             m = User.find(t.user_id)
 #             @students_of_this_group.push(user: m)
 #             puts " Current student is : " + m.username
-#       end
+#       end   
   end
 
     def get_problems_of_group
