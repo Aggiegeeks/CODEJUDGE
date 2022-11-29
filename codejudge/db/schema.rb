@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2022_11_25_225020) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_062236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +31,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_225020) do
     t.bigint "user_id", null: false
     t.boolean "passed"
     t.bigint "testScore"
+    t.bigint "problem_id", null: false
+    t.index ["problem_id"], name: "index_attempts_on_problem_id"
     t.index ["user_id"], name: "index_attempts_on_user_id"
   end
 
@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_225020) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id"
+    t.text "instructor_solution"
     t.index ["author_id"], name: "index_problems_on_author_id"
   end
 
@@ -132,6 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_25_225020) do
   add_foreign_key "assignments", "roles"
   add_foreign_key "assignments", "users"
   add_foreign_key "attempts", "languages"
+  add_foreign_key "attempts", "problems"
   add_foreign_key "attempts", "users"
   add_foreign_key "problem_groups", "groups"
   add_foreign_key "problem_groups", "problems"
