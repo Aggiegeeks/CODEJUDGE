@@ -24,7 +24,7 @@ Proposed New Functionalities for this semester :
 6. Providing ability for Instructors to create groups of students and problems
 7. Activating and Deactivating test cases
 
-Heroku Deployment URL : https://code-judge-tamu-f22.herokuapp.com/
+Heroku Deployment URL : http://gokul-codejudge.herokuapp.com/
 
 
 
