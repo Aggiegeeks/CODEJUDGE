@@ -5,7 +5,14 @@ class ProblemsController < ApplicationController
 
   # GET /problems or /problems.json
   def index
+    @tags = Tag.all
     @problems = Problem.all
+    @map = Hash.new
+    for prb in @problems do
+      tag_name = Tag.where(id: ProblemTag.where(problem_id: prb.id).pluck(:tag_id)).pluck(:tag)
+      @map.store(prb.title,tag_name[0])
+    end
+    
     render :index
   end
 
@@ -19,6 +26,7 @@ class ProblemsController < ApplicationController
 
   # GET /problems/new
   def new
+    @tags = Tag.all
     @problem = Problem.new
     authorize @problem
     # @test_cases = @problem.test_cases
@@ -27,17 +35,24 @@ class ProblemsController < ApplicationController
   # GET /problems/1/edit
   def edit
     authorize :problem
+    @tags = Tag.all
   end
 
   # POST /problems or /problems.json
   def create
     @problem = Problem.new(problem_params)
+    @problem_tag = ProblemTag.new
+    @problem_tag.tag_id = tag_params
     authorize @problem
+    puts "entering in create"
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to problem_url(@problem), notice: "Problem was successfully created." }
-        format.json { render :show, status: :created, location: @problem }
+        @problem_tag.problem_id = @problem.id
+        if @problem_tag.save!
+          format.html { redirect_to problem_url(@problem), notice: "Problem was successfully created." }
+          format.json { render :show, status: :created, location: @problem }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
@@ -48,6 +63,7 @@ class ProblemsController < ApplicationController
   # PATCH/PUT /problems/1 or /problems/1.json
   def update
     authorize :problem
+    @tags = Tag.all
 
     if @problem.update(problem_params)
       redirect_to questions_path
@@ -75,6 +91,10 @@ class ProblemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def problem_params
       params.require(:problem).permit(:title, :body, test_cases_attributes: [:id, :input, :output, :example, :_destroy])
+    end
+
+    def tag_params
+      params.require(:tags)
     end
 
     def set_languages
