@@ -24,6 +24,10 @@ Proposed New Functionalities for this semester :
 6. Providing ability for Instructors to create groups of students and problems
 7. Activating and Deactivating test cases
 
+Heroku Deployment URL : https://code-judge-tamu-f22.herokuapp.com/
+
+
+
 Local Development:
 
 Because CodeJudge is in a Docker container, starting up the application is very simple. First, make sure Docker is installed and running on your machine.
