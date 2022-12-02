@@ -10,8 +10,8 @@ Members of the project :
 2. Rajendra Thottempudi
 3. Shyam Prasad Nagulavancha
 4. Aravind Badavath
-5. Chandu Akula
-6. Chetan Nc 
+5. Jeya Krishna Chandu Akula
+6. Chetan Nagavathi Chendrayudu
 
 
 Proposed New Functionalities for this semester :
