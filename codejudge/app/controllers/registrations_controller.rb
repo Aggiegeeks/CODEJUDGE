@@ -9,16 +9,21 @@ class RegistrationsController < ApplicationController
     unless flash[:google_sign_in].nil?
       @user = sign_up_with_google
     else
-      @user = User.new(user_params)      
-      @assignment = Assignment.new
+      @user = User.new
+      @user.firstname = user_params[:firstname]  
+      @user.lastname = user_params[:lastname]   
+      @user.email = user_params[:email]   
+      @user.username = user_params[:username]   
+      @user.password = user_params_3
+      @user.password_confirmation = user_params_4   
 
+      @assignment = Assignment.new
       if user_params_2 == "Instructor"
         @assignment.role_id = 2
       else 
         @assignment.role_id = 4
       end
     end
-
     if @user.save
       @assignment.user_id = User.find_by(username: user_params[:username]).id
       if @assignment.save
@@ -37,6 +42,14 @@ class RegistrationsController < ApplicationController
 
   def user_params_2
     params.require(:logintype)
+  end
+
+  def user_params_3
+    params.require(:password)
+  end
+
+  def user_params_4
+    params.require(:password_confirmation)
   end
 
   def sign_up_with_google

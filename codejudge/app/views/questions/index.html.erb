@@ -6,17 +6,17 @@
   <table>
     <thead>
       <tr>
-        <th><h1 class="col-12">Questions</h1></th>
-        <th><%= link_to "New Question", new_problem_path, :class => "button" %></th>
+        <th><h1 class="col-12">Problems</h1></th>
+        <th><%= link_to "New Problem", new_problem_path, :class => "button" %></th>
       </tr>
     </thead>
     <tbody>
       <% @problems.each do |problem| %>
         <tr>
-          <td><b><%= problem.title %></b></td>
+          <td><b><%=link_to problem.title, problem %></b></td>
           <th colspan="2"></th>
-          <td><%= link_to "Modify", edit_problem_path(problem) %></td>
-          <td><%= link_to "Delete", problem , method: :delete %></td>
+          <td><%= link_to "", problem %></td>
+          <td><%= link_to "", problem %></td>
         </tr>
         <% end %>
     </tbody>
