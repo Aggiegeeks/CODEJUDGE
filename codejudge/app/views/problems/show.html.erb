@@ -34,7 +34,9 @@
   <% end %>
 </section>
 <% if @problem.instructor_solution %>
+  <%if current_user.role? :instructor %>
     <%= link_to "Show Solution", solution_problem_url(@problem.id), :class =>"button"%>
+  <%end%>
 <%end%>
 <% if current_user.role? :instructor #&& @problem.author_id == cookies.signed[:user_id]#%>
   <section id ="solution-upload">
