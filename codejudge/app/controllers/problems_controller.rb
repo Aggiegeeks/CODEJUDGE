@@ -123,7 +123,7 @@ class ProblemsController < ApplicationController
     @problem_tag.tag_id = tag_params
     @problem_tag.save
     if @problem.update(problem_params)
-      redirect_to questions_path
+      redirect_to problems_path
     end
   end
 
@@ -134,7 +134,7 @@ class ProblemsController < ApplicationController
     @problem.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Problem was successfully destroyed." }
+      format.html { redirect_to problems_url, notice: "Problem was successfully destroyed." }
       format.json { head :no_content }
     end
   end
