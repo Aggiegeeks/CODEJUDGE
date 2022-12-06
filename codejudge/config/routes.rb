@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/remove_student_group', to: 'student_groups#remove_student_group'
   get '/remove_problem_group', to: 'problem_groups#remove_problem_group'
   post '/solution_upload_form_path', to: 'problems#solution_upload'
+  post '/problems/:id', to: 'problems#update'
+
 
   resources :approved_requests
   resources :admins
