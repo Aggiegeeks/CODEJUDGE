@@ -5,10 +5,13 @@ class RegistrationsController < ApplicationController
   def new
     @user = User.new
   end
+
   def create
+    @assignment = Assignment.new
     unless flash[:google_sign_in].nil?
       @user = sign_up_with_google
     else
+<<<<<<< Updated upstream
       @user = User.new
       @user.firstname = user_params[:firstname]  
       @user.lastname = user_params[:lastname]   
@@ -18,6 +21,9 @@ class RegistrationsController < ApplicationController
       @user.password_confirmation = user_params_4   
 
       @assignment = Assignment.new
+=======
+      @user = User.new(user_params)      
+>>>>>>> Stashed changes
       if user_params_2 == "Instructor"
         @assignment.role_id = 2
       else 
@@ -25,9 +31,15 @@ class RegistrationsController < ApplicationController
       end
     end
     if @user.save
+      puts "helooooo"
       @assignment.user_id = User.find_by(username: user_params[:username]).id
-      if @assignment.save
+      puts "chaloooo"
+      puts @assignment.user_id
+      if @assignment.save!
+        puts "asdf"
         redirect_to root_path, notice: 'Successfully created account'
+      else
+       render :new
       end
     else
       render :new

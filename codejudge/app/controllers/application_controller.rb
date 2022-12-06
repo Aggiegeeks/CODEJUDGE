@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user_logged_in!
+    puts "in require......"
     if @current_user.nil?
       redirect_to root_path, alert: 'You must be signed in'
     else

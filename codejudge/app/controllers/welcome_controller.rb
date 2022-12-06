@@ -15,6 +15,8 @@ class WelcomeController < ApplicationController
         redirect_to root_path, notice: "Login with Google failed"
       end
     else
+      puts "checking....."
+      puts params[:username]
       user = User.find_by(username: params[:username])
       if user.present? && user.authenticate(params[:password])
         logged_in = true
@@ -43,6 +45,8 @@ class WelcomeController < ApplicationController
 
   def log_out
     # deletes user session
+    cookies.delete(:user_id)
+    cookies.delete(:_codejudge_session)
     session[:user_id] = nil
     redirect_to root_path, notice: 'Logged Out'
   end
