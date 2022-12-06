@@ -1,4 +1,5 @@
-<%= form_for(@problem, data: { turbo: false }) do |f| %>
+<%= form_with(:model => @problem,:id => "problem_form", :class => "form-problem", :method => :post, data: { turbo: false }) do |f| %>
+
   <% if @problem.errors.any? %>
     <div class="error">
       <h2><%= pluralize(@problem.errors.count, "error") %> prohibited this @problem from being saved:</h2>
@@ -15,6 +16,10 @@
   <%= f.text_field :title %>
   <%= f.label "Description" %>
   <%= f.text_area :body %>
+  <%= f.label "Tags" %>
+  <%= select_tag :tags, options_from_collection_for_select(@tags, 'id', 'tag'), class: 'form-control col-md-7 col-xs-12', id: 'countries_select' %>
+
+
   
   <%= f.fields_for :test_cases do |test_case| %>
     <%= render "test_case_fields", f: test_case %>

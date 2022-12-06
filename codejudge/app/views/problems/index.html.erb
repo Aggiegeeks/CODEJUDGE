@@ -14,12 +14,17 @@
         <% if policy(:problem).new? %>
           <th colspan="2"></th>
         <% end %>
+        <th>Tags</th>
+        <% if policy(:problem).new? %>
+          <th colspan="2"></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @problems.each do |problem| %>
       <tr>
         <td><%=link_to problem.title, problem %></td>
+        <td><%=link_to @map[problem.title], problem %></td>
         <% if policy(:problem).new? %>
           <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
           <td>
