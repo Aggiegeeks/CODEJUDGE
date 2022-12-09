@@ -2,6 +2,7 @@
 
 <h1>Class Details</h1>
 
+<%if current_user.role? :instructor %>
 <div class="col-12">
   <%= link_to "Add Students", addition_student_group_url(get_group_id), :class => "button" %>
 </div>
@@ -37,6 +38,7 @@
     </tbody>
   </table>
 </div>
+<% end %>
 <div class="table col-12">
   <table>
     <thead>
