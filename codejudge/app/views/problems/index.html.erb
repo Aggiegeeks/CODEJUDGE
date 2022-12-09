@@ -13,6 +13,15 @@
 <div class="table col-12">
   <table>
     <thead>
+    <tr>
+    <th>
+    <h5> search problems with tags<h5>
+    <br>
+        <%= form_with url: searchtag_path, local: true, method: :get do |f|%>
+          <%= select_tag :tags, options_from_collection_for_select(@tags, 'id', 'tag'), class: 'form-control col-md-7 col-xs-12', id: 'countries_select' %>
+          <%= f.submit "Search" %>
+        <%end%>
+        </th></tr>
       <tr>
         <th>Title</th>
         <th colspan="2"></th>
