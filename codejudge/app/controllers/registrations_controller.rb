@@ -5,7 +5,9 @@ class RegistrationsController < ApplicationController
   def new
     @user = User.new
   end
+
   def create
+    @assignment = Assignment.new
     unless flash[:google_sign_in].nil?
       @user = sign_up_with_google
     else
@@ -25,9 +27,15 @@ class RegistrationsController < ApplicationController
       end
     end
     if @user.save
+      puts "helooooo"
       @assignment.user_id = User.find_by(username: user_params[:username]).id
-      if @assignment.save
+      puts "chaloooo"
+      puts @assignment.user_id
+      if @assignment.save!
+        puts "asdf"
         redirect_to root_path, notice: 'Successfully created account'
+      else
+       render :new
       end
     else
       render :new

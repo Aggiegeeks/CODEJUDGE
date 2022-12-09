@@ -26,6 +26,12 @@ class ProblemsController < ApplicationController
     @no_test_cases_prompt = current_user.role?(:student) ? "No example Test Cases provided." : "No Test Cases were specified for that Problem."
   end
 
+  def searchtag
+    @tagname = Tag.where(id: tag_params).pluck(:tag)
+    @tag = ProblemTag.where(tag_id: tag_params).pluck(:problem_id)
+    @prbs= Problem.where(id: @tag)
+  end
+
   def solution_upload
     @problem = Problem.where(id: params[:problem_id])
     puts @problem.inspect
@@ -152,6 +158,10 @@ class ProblemsController < ApplicationController
 
     def tag_params
       params.require(:tags)
+    end
+
+    def search_tag_params
+      params.require(:searchtag)
     end
 
     def set_languages
