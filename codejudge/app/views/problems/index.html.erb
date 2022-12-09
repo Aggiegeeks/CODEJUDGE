@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if policy(:problem).new? %>
+  <h1>Welcome Instructor!</h1>
+<% end %>
+
 <h1>Problems</h1>
 <% if policy(:problem).new? %>
   <div class="col-12">
@@ -9,28 +13,28 @@
 <div class="table col-12">
   <table>
     <thead>
+    <tr>
+    <th>
+    <h5> search problems with tags<h5>
+    <br>
+        <%= form_with url: searchtag_path, local: true, method: :get do |f|%>
+          <%= select_tag :tags, options_from_collection_for_select(@tags, 'id', 'tag'), class: 'form-control col-md-7 col-xs-12', id: 'countries_select' %>
+          <%= f.submit "Search" %>
+        <%end%>
+        </th></tr>
       <tr>
         <th>Title</th>
-        <% if policy(:problem).new? %>
-          <th colspan="2"></th>
-        <% end %>
+        <th colspan="2"></th>
         <th>Tags</th>
-        <% if policy(:problem).new? %>
-          <th colspan="2"></th>
-        <% end %>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
       <% @problems.each do |problem| %>
       <tr>
         <td><%=link_to problem.title, problem %></td>
+        <th colspan="2"></th>
         <td><%=link_to @map[problem.title], problem %></td>
-        <% if policy(:problem).new? %>
-          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-          <td>
-            <%= button_delete_modal_tag "Delete", problem, "Problem" %>
-          </td>
-        <% end %>
       </tr>
       <% end %>
     </tbody>

@@ -26,6 +26,12 @@ class ProblemsController < ApplicationController
     @no_test_cases_prompt = current_user.role?(:student) ? "No example Test Cases provided." : "No Test Cases were specified for that Problem."
   end
 
+  def searchtag
+    @tagname = Tag.where(id: tag_params).pluck(:tag)
+    @tag = ProblemTag.where(tag_id: tag_params).pluck(:problem_id)
+    @prbs= Problem.where(id: @tag)
+  end
+
   def solution_upload
     @problem = Problem.where(id: params[:problem_id])
     puts @problem.inspect
@@ -123,7 +129,7 @@ class ProblemsController < ApplicationController
     @problem_tag.tag_id = tag_params
     @problem_tag.save
     if @problem.update(problem_params)
-      redirect_to questions_path
+      redirect_to problems_path
     end
   end
 
@@ -134,7 +140,7 @@ class ProblemsController < ApplicationController
     @problem.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Problem was successfully destroyed." }
+      format.html { redirect_to problems_url, notice: "Problem was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -152,6 +158,10 @@ class ProblemsController < ApplicationController
 
     def tag_params
       params.require(:tags)
+    end
+
+    def search_tag_params
+      params.require(:searchtag)
     end
 
     def set_languages

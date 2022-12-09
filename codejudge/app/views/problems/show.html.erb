@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="col-12">
-  <%= render "partials/link", copy: "Back to Problems", path: questions_path, icon: "chevron-left", classes: "link--back" %>
+  <%= render "partials/link", copy: "Back to Problems", path: problems_path, icon: "chevron-left", classes: "link--back" %>
 </div>
 
 <h1 class="col-12 col-md-6"><%= @problem.title %></h1>
@@ -34,7 +34,9 @@
   <% end %>
 </section>
 <% if @problem.instructor_solution %>
+  <%if current_user.role? :instructor %>
     <%= link_to "Show Solution", solution_problem_url(@problem.id), :class =>"button"%>
+  <%end%>
 <%end%>
 <% if current_user.role? :instructor #&& @problem.author_id == cookies.signed[:user_id]#%>
   <section id ="solution-upload">
@@ -47,7 +49,7 @@
     <% end %>
   </section>
 <% end %>
-<div class="nav-options">
+<div  class="layout-but">
   <% if policy(:problem).edit? %>
     <%= link_to "Edit this Problem", edit_problem_path(@problem), :class => "button" %>
   <% end %> 
