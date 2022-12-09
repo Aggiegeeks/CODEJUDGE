@@ -1,0 +1,19 @@
+<h1> Problems with <span><%= @tagname[0] %></span></h1>
+<div class="table col-12">
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @prbs.each do |problem| %>
+    <tr>
+      <td><%=link_to problem.title, problem %></td>
+      <th colspan="2"></th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

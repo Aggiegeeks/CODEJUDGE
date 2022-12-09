@@ -11,7 +11,6 @@ class RegistrationsController < ApplicationController
     unless flash[:google_sign_in].nil?
       @user = sign_up_with_google
     else
-<<<<<<< Updated upstream
       @user = User.new
       @user.firstname = user_params[:firstname]  
       @user.lastname = user_params[:lastname]   
@@ -21,9 +20,6 @@ class RegistrationsController < ApplicationController
       @user.password_confirmation = user_params_4   
 
       @assignment = Assignment.new
-=======
-      @user = User.new(user_params)      
->>>>>>> Stashed changes
       if user_params_2 == "Instructor"
         @assignment.role_id = 2
       else 
