@@ -109,3 +109,32 @@ langs.each do |lang|
     pretty_name: lang[2]
   )
 end
+
+new_tags = [
+    ["Array","Array"],
+    ["BFS", "BFS"],
+    ["Backtracking", "Backtracking"],
+    ["Binary Search","Binary Search"],
+    ["DFS","DFS"],
+    ["Dynamic Programming","Dynamic Programming"],
+    ["Graph","Graph"],
+    ["Greedy","Greedy"],
+    ["Hash Table","Hash Tables"],
+    ["Linked List","Linked Lists"],
+    ["Math","Maths"],
+    ["Matrix","Matrices"],
+    ["Other","Others"],
+    ["Queue","Queues"],
+    ["Recursion","Recursions"],
+    ["Sorting","Sortings"],
+    ["Stack","Stacks"],
+    ["String","Strings"],
+    ["Tree","Trees"],
+    ["Two Pointers","Two Pointers"]
+]
+new_tags.each do |new_tag|
+  Tag.create(
+    tag: new_tag[0],
+    description: new_tag[1]
+  )
+end
